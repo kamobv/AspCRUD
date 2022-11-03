@@ -1,0 +1,36 @@
+﻿@model AspCRUD.ViewModels.VmProductEdit
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h3 class="text-info">Create</h3>
+<div class="row">
+    <div class="col-mg-12">
+        <form method="post">
+            <input name="Id" value="@Model.Product.Id" hidden>
+            <div class="form-group">
+                <label>Name</label>
+                <input name="Name" value="@Model.Product.Name" required type="text" class="form-control" placeholder="Name...">
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input name="Quantity" value="@Model.Product.Quantity" required type="number" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input step="0.01" name="Price" value="@Model.Product.Price" required type="number" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Category Name</label>
+                <select class="form-control" name="CategoryId">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id" @(category.Id == Model.Product.Category.Id ? "selected" : "")>@category.Name</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
